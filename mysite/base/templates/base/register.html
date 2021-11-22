@@ -1,0 +1,28 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+
+
+<h1>Register</h1>
+
+<form method="POST">
+    {% if form.errors %}
+    <div class="alert alert-danger" style="color: red;">
+        <ul>
+            {% for error in form.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% csrf_token %}
+    <!-- {{form.as_p}} -->
+    {{form.as_table}}
+    <input type="submit" value="Register">
+</form>
+
+
+
+<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+
+{% endblock content %}
